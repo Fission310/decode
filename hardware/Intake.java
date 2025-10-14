@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.hardware.mechanisms;
+package org.firstinspires.ftc.teamcode.hardware;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -21,7 +21,7 @@ public class Intake extends Mechanism {
     private DcMotor intake;
     private PIDController controller;
 
-    public static double LEFT_POWER = 1;
+    public static double POWER = 1;
 
     public Intake(LinearOpMode opMode) {
         this.opMode = opMode;
@@ -33,24 +33,24 @@ public class Intake extends Mechanism {
     }
 
     public void intake() {
-        intake.setPower(LEFT_POWER);
+        intake.setPower(POWER);
     }
 
     public void stop() {
         intake.setPower(0);
     }
 
-    public void outtake() {
-        intake.setPower(-LEFT_POWER);
-    }
+    /*public void outtake() {
+        intake.setPower(-POWER);
+    }*/
 
     @Override
     public void loop(Gamepad gamepad) {
         if (gamepad.right_trigger > 0) {
             intake();
-        } else if (gamepad.left_trigger > 0) {
+        } /*else if (gamepad.left_trigger > 0) {
             outtake();
-        } else {
+        }*/ else {
             stop();
         }
     }

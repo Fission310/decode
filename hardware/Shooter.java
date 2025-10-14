@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.hardware.mechanisms;
+package org.firstinspires.ftc.teamcode.hardware;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -24,12 +24,8 @@ public class Shooter extends Mechanism {
 
     private VoltageSensor voltage;
 
-    public static double INTAKE_POS = 0.89; // 0.18
-    public static double AUTO_INTAKE_POS = 0.18;
-    public static double AUTO_SCORE_POS = 0.27;
-    public static double AUTO_CONE_STACK_POS = 0.57;
-    public static double SCORE_POS = 0.27; //0.76
-    public static double GROUND_SCORE_POS = 0.82;
+    public static double shootPwr = 0.89; // 0.18
+    public static double passPwr = 0.18;
 
     public Shooter(LinearOpMode opMode) { this.opMode = opMode; }
 
@@ -53,51 +49,27 @@ public class Shooter extends Mechanism {
 
     }
 
-    public void intakePos() {
-        leftShoot.setPosition(INTAKE_POS);
-        rightArm.setPosition(INTAKE_POS);
+    public void shoot() {
+        motors[0].setPower(shootPwr);
+        motors[1].setPower(shootPwr);
     }
 
-    public void autoIntakePos() {
-        leftShoot.setPosition(AUTO_INTAKE_POS);
-        rightArm.setPosition(AUTO_INTAKE_POS);
+    public void passivePower() {
+        motors[0].setPower(passPwr);
+        motors[1].setPower(passPwr);
     }
 
-    public void autoScorePos() {
-        leftShoot.setPosition(AUTO_SCORE_POS);
-        rightArm.setPosition(AUTO_SCORE_POS);
+    public void adjustPower(){
+
     }
 
-    public void autoConeStackPos() {
-        leftArm.setPosition(AUTO_CONE_STACK_POS);
-        rightArm.setPosition(AUTO_CONE_STACK_POS);
-    }
-
-    public void scorePos() {
-        leftArm.setPosition(SCORE_POS);
-        rightArm.setPosition(SCORE_POS);
-    }
-
-    public void groundScorePos() {
-        leftArm.setPosition(GROUND_SCORE_POS);
-        rightArm.setPosition(GROUND_SCORE_POS);
-    }
-
-    public void moveToPos(double pos) {
-        leftArm.setPosition(pos);
-        rightArm.setPosition(pos);
-    }
 
     @Override
     public void loop(Gamepad gamepad) {
         if (gamepad.dpad_up) {
-            scorePos();
-        } else if (gamepad.dpad_down) {
-            intakePos();
-        } else if (gamepad.dpad_right) {
-            autoScorePos();
-        } else if (gamepad.dpad_left) {
-            autoConeStackPos();
+            shoot();
+        } else{
+            passivePower();
         }
     }
 
