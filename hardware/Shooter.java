@@ -59,6 +59,10 @@ public class Shooter extends Mechanism {
         motors[1].setPower(passPwr);
     }
 
+    public void setPower(double d){
+        shootPwr = d;
+    }
+
     public void adjustPower(){
 
     }

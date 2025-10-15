@@ -40,9 +40,9 @@ public class Intake extends Mechanism {
         intake.setPower(0);
     }
 
-    /*public void outtake() {
+    public void outtake() {
         intake.setPower(-POWER);
-    }*/
+    }
 
     @Override
     public void loop(Gamepad gamepad) {
