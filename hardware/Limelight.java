@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.hardware;
 
-import static org.firstinspires.ftc.teamcode.opmode.auton.util.LimelightConstants.*;
+import static org.firstinspires.ftc.teamcode.opmode.auton.LimelightConstants.*;
 
 import java.util.ArrayList;
 import java.util.List;
