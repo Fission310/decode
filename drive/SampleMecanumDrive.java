@@ -152,8 +152,8 @@ public class SampleMecanumDrive extends MecanumDrive {
         // lastTrackingEncPositions, lastTrackingEncVels));
         setLocalizer(new PinpointLocalizer(odo));
         trajectorySequenceRunner = new TrajectorySequenceRunner(
-                follower, HEADING_PID, batteryVoltageSensor,
-                lastEncPositions, lastEncVels, lastTrackingEncPositions, lastTrackingEncVels);
+                follower, HEADING_PID)/*, batteryVoltageSensor,
+                lastEncPositions, lastEncVels, lastTrackingEncPositions, lastTrackingEncVels)*/;
     }
 
     public TrajectoryBuilder trajectoryBuilder(Pose2d startPose) {

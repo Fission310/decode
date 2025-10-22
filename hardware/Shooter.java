@@ -7,14 +7,10 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
-import com.stuyfission.fissionlib.input.GamepadStatic;
 import com.stuyfission.fissionlib.util.Mechanism;
-import org.firstinspires.ftc.teamcode.util.NominalVoltage;
 
 
-import org.firstinspires.ftc.teamcode.opmode.teleop.Controls;
 import org.firstinspires.ftc.teamcode.util.PIDController;
-import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 @Config
 public class Shooter extends Mechanism {

@@ -8,7 +8,7 @@ import com.stuyfission.fissionlib.util.Mechanism;
 import org.firstinspires.ftc.teamcode.hardware.drivebase.FieldCentricDrivetrain;
 
 public class FieldCentricRobot extends Mechanism {
-
+    private Scoring scoring = new Scoring(opMode);
     private FieldCentricDrivetrain dt = new FieldCentricDrivetrain(opMode);
 
     public FieldCentricRobot(LinearOpMode opMode) { this.opMode = opMode; }
@@ -16,12 +16,12 @@ public class FieldCentricRobot extends Mechanism {
     @Override
     public void init(HardwareMap hwMap) {
         dt.init(hwMap);
-        scoringFSM.init(hwMap);
+        scoring.init(hwMap);
     }
 
     @Override
     public void loop(Gamepad gamepad) {
         dt.loop(gamepad);
-        scoringFSM.loop(gamepad);
+        scoring.loop(gamepad);
     }
 }
