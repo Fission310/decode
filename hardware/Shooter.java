@@ -4,6 +4,7 @@ import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
@@ -17,17 +18,22 @@ public class Shooter extends Mechanism {
     private PIDController controller;
 
     private final DcMotorEx[] motors = new DcMotorEx[2];
+    private Servo servo;
 
     private VoltageSensor voltage;
 
     public static double shootPwr = 0.89; // 0.18
     public static double passPwr = 0.18;
+    public static double srvo = 0;
 
     public Shooter(LinearOpMode opMode) { this.opMode = opMode; }
 
     @Override
     public void init(HardwareMap hwMap) {
         voltage = hwMap.voltageSensor.iterator().next();
+        servo = hwMap.get(Servo.class, "shooterServo");
+
+        servo.setPosition(srvo);
         motors[0] = hwMap.get(DcMotorEx.class, "shooterLeftMotor");
         motors[1] = hwMap.get(DcMotorEx.class, "shooterRightMotor");
 
@@ -60,8 +66,17 @@ public class Shooter extends Mechanism {
     }
 
     public void adjustPower(){
-
+//gonna be the auto power adjust but limelight needs to be done (and tested) first
     }
+    public void setServo(double d){
+        servo.setPosition(d);
+    }
+
+    public void defaultServo(){
+        srvo = 0;
+        setServo(srvo);
+    }
+
 
 
     @Override
